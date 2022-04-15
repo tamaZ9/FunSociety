@@ -21,7 +21,7 @@ import it.unibo.ai.didattica.competition.tablut.exceptions.*;
  * @author A. Piretti, Andrea Galassi
  *
  */
-public class GameAshtonTablut implements Game {
+public class GameAshtonTablut implements Game , aima.core.search.adversarial.Game<State, Action, State.Turn> {
 
 	/**
 	 * Number of repeated states that can occur before a draw
@@ -750,4 +750,43 @@ public class GameAshtonTablut implements Game {
 	}
 
 
+	@Override
+	public State getInitialState() {
+		return new StateTablut();
+	}
+
+	@Override
+	public State.Turn[] getPlayers() {
+		return new State.Turn[]{State.Turn.BLACK, State.Turn.WHITE};
+	}
+
+	@Override
+	public State.Turn getPlayer(State state) {
+		return state.getTurn();
+	}
+
+	@Override
+	public List<Action> getActions(State state) {
+		//TODO
+		return null;
+	}
+
+	@Override
+	public State getResult(State state, Action action) {
+		//TODO
+		return null;
+	}
+
+	@Override
+	public boolean isTerminal(State state) {
+		State.Turn turn = state.getTurn();
+
+		return turn.equals(State.Turn.BLACKWIN) || turn.equals(State.Turn.WHITEWIN) || turn.equals(State.Turn.DRAW);
+	}
+
+	@Override
+	public double getUtility(State state, State.Turn turn) {
+		//TODO
+		return 0;
+	}
 }
