@@ -15,10 +15,7 @@ public abstract class Heuristic {
      * @return true if K is on the throne, false otherwise.
      */
     public boolean checkKingPosition(State state){
-        if(state.getPawn(4,4).equalsPawn("K"))
-            return true;
-        else
-            return false;
+        return state.getPawn(4, 4).equalsPawn("K");
     }
 
     // Heuristic value
