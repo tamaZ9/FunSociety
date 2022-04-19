@@ -11,7 +11,7 @@ public abstract class Heuristic {
     }
 
     /**
-     * @param state
+     * @param state the current state
      * @return true if K is on the throne, false otherwise.
      */
     public boolean checkKingPosition(State state){
