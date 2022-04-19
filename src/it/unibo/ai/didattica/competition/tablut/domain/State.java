@@ -207,7 +207,7 @@ public abstract class State {
 			e.printStackTrace();
 		}
 
-		Pawn oldboard[][] = this.getBoard();
+		Pawn[][] oldboard = this.getBoard();
 		Pawn newboard[][] = result.getBoard();
 
 		for (int i = 0; i < this.board.length; i++) {

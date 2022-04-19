@@ -1,9 +1,11 @@
 package it.unibo.ai.didattica.competition.tablut.funsociety.client;
 
 import it.unibo.ai.didattica.competition.tablut.client.TablutClient;
+import it.unibo.ai.didattica.competition.tablut.domain.Action;
 import it.unibo.ai.didattica.competition.tablut.domain.GameAshtonTablut;
 import it.unibo.ai.didattica.competition.tablut.domain.State;
 import it.unibo.ai.didattica.competition.tablut.domain.StateTablut;
+import it.unibo.ai.didattica.competition.tablut.funsociety.search.IterativeDeepeningAlphaBeta;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -57,7 +59,15 @@ public class FunSocietyClient extends TablutClient {
             if (this.getPlayer().equals(State.Turn.WHITE)){
                 //Il nostro player e' white ed e' il nostro turno
                 if (state.getTurn().equals(State.Turn.WHITE)){
-                    //TODO: usare algoritmo di ricerca e mandare action al server
+                    IterativeDeepeningAlphaBeta search = new IterativeDeepeningAlphaBeta(game, Double.MIN_VALUE, Double.MAX_VALUE, this.timeout);
+                    Action a = search.makeDecision(state);
+
+                    try{
+                        this.write(a);
+                    } catch (IOException | ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
                 } else if (state.getTurn().equals(State.Turn.WHITEWIN)){
                     System.out.println("Vittoria!");
                 } else if (state.getTurn().equals(State.Turn.BLACKWIN)){
@@ -68,7 +78,14 @@ public class FunSocietyClient extends TablutClient {
             }  else if (this.getPlayer().equals(State.Turn.BLACK)){
                 //Il nostro player e' black ed e' il nostro turno
                 if (state.getTurn().equals(State.Turn.BLACK)){
-                    //TODO: usare algoritmo di ricerca e mandare action al server
+                    IterativeDeepeningAlphaBeta search = new IterativeDeepeningAlphaBeta(game, Double.MIN_VALUE, Double.MAX_VALUE, this.timeout);
+                    Action a = search.makeDecision(state);
+
+                    try{
+                        this.write(a);
+                    } catch (IOException | ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 } else if (state.getTurn().equals(State.Turn.WHITEWIN)){
                     System.out.println("Sconfitta :(");
                 } else if (state.getTurn().equals(State.Turn.BLACKWIN)){
