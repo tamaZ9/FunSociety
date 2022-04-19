@@ -10,7 +10,13 @@ public class BlackHeuristic extends Heuristic{
 
     @Override
     public double evaluateState() {
-        //TODO
+        //TODO:
+        /*
+        *  Considerare il re accerchiato
+        *  Bloccare gli escape
+        *  Evitare di perdere troppe pedine per riuscire a mangiare il re
+        *  Limitare i movimenti del re se e' nel castello
+        * */
         return 0;
     }
 }

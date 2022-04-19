@@ -10,7 +10,13 @@ public class WhiteHeuristic extends Heuristic{
 
     @Override
     public double evaluateState() {
-        //TODO
+        //TODO:
+        /*
+        *  Considerare la distanza del re dall'escape
+        *  Pedine nemiche intorno al re
+        *  Pedine mangiate
+        *  Possibilita di essere mangiato
+        * */
         return 0;
     }
 }

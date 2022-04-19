@@ -32,6 +32,6 @@ public class IterativeDeepeningAlphaBeta extends IterativeDeepeningAlphaBetaSear
     public Action makeDecision(State state) {
         Action a = super.makeDecision(state);
         System.out.println("Expanded nodes = " + getMetrics().get(METRICS_NODES_EXPANDED) + " , maximum depth = " + getMetrics().get(METRICS_MAX_DEPTH));
-        return  a;
+        return a;
     }
 }

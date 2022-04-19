@@ -21,6 +21,7 @@ public abstract class Heuristic {
             return false;
     }
 
+    // Heuristic value
     public abstract double evaluateState();
 
 }
