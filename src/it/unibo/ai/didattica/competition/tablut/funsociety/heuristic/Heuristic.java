@@ -145,7 +145,7 @@ public abstract class Heuristic {
 
         // Check above the king
         for (int i = kingPosition[0] - 1; i >= 0; i--){
-            if (!(state.getPawn(i, kingPosition[1]).equalsPawn("O"))){
+            if (!(state.getPawn(i, kingPosition[1]).equalsPawn("O")) || isCamp(i, kingPosition[1])){
                 result--;
                 break;
             }
@@ -153,7 +153,7 @@ public abstract class Heuristic {
 
         // Check under the king
         for (int i = kingPosition[0] + 1; i < state.getBoard().length; i++){
-            if (!(state.getPawn(i, kingPosition[1]).equalsPawn("O"))){
+            if (!(state.getPawn(i, kingPosition[1]).equalsPawn("O")) || isCamp(i, kingPosition[1])){
                 result--;
                 break;
             }
@@ -170,7 +170,7 @@ public abstract class Heuristic {
 
         // Check the left direction
         for (int j = kingPosition[1] - 1; j >= 0; j--){
-            if (!(state.getPawn(kingPosition[0], j).equalsPawn("O"))){
+            if (!(state.getPawn(kingPosition[0], j).equalsPawn("O")) || isCamp(kingPosition[0], j)){
                 result--;
                 break;
             }
@@ -178,7 +178,7 @@ public abstract class Heuristic {
 
         // Check the right direction
         for (int j = kingPosition[1] + 1; j < state.getBoard().length; j++){
-            if (!(state.getPawn(kingPosition[0], j).equalsPawn("O"))){
+            if (!(state.getPawn(kingPosition[0], j).equalsPawn("O")) || isCamp(kingPosition[0], j)){
                 result--;
                 break;
             }

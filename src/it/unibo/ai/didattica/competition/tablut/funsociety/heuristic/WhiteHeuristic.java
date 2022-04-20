@@ -15,12 +15,10 @@ public class WhiteHeuristic extends Heuristic{
 
     @Override
     public double evaluateState() {
-        //TODO:
         /*
         *  Considerare la distanza del re dall'escape
         *  Pedine nemiche intorno al re
-        *  Pedine mangiate (nemici o alleati?)
-        *  Possibilita di essere mangiato
+        *  Pedine mangiate
         * */
 
         double result = 0;
@@ -32,10 +30,29 @@ public class WhiteHeuristic extends Heuristic{
         return result;
     }
 
+    /**
+     * @return the number of possible king path to reach one of the Escapes
+     * */
     private double kingEscapeValue(){
+        double result = 0;
 
-        //TODO
-        return 0;
+        if (!isKingOnCentralSquare()){
+            int kingRow = kingPosition[0];
+            int kingCol = kingPosition[1];
+            if (!(kingRow >= 3 && kingRow <= 5) && !(kingCol >= 3 && kingCol <= 5)){
+                // Possible escape path horizontally and vertically
+                result += possibleKingEscapesHorizontal();
+                result += possibleKingEscapesVertical();
+            } else if (kingRow >= 3 && kingRow <= 5) {
+                // Vertical check
+                result += possibleKingEscapesVertical();
+            } else {
+                // Horizontal check
+                result += possibleKingEscapesHorizontal();
+            }
+        }
+
+        return result;
     }
 
     /**
