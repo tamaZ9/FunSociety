@@ -4,6 +4,8 @@ import it.unibo.ai.didattica.competition.tablut.domain.State;
 
 public class BlackHeuristic extends Heuristic{
 
+    private static final int[] weights = {};
+
     public BlackHeuristic(State state) {
         super(state);
     }
