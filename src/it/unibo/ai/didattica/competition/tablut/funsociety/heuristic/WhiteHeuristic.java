@@ -33,10 +33,14 @@ public class WhiteHeuristic extends Heuristic{
     }
 
     private double kingEscapeValue(){
+
         //TODO
         return 0;
     }
 
+    /**
+     * @return the value of enemy pawns surrounding the king, normalized using the number of enemies required to eat the king on the base of his position
+     * */
     private double kingSurroundingValue(){
         int enemyPiecesAround = this.enemyPiecesAroundKing();
 
@@ -47,7 +51,7 @@ public class WhiteHeuristic extends Heuristic{
             // Se il re e' sul trono ce ne vogliono 4
             return ((4.0 - enemyPiecesAround) / 4);
         } else {
-            // Normalmente ne servono 2 (nel conteggio dei nemici e' gia' presente la citadel
+            // Normalmente ne servono 2 (nel conteggio dei nemici e' gia' presente la citadel)
             return ((2.0 - enemyPiecesAround) / 2);
         }
     }
