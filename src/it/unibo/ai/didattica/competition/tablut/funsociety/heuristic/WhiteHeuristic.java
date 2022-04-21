@@ -4,10 +4,11 @@ import it.unibo.ai.didattica.competition.tablut.domain.State;
 
 public class WhiteHeuristic extends Heuristic{
 
-    private static final int[] weights = {50, 30, 20};
+    private static final int[] weights = {50, 30, 10, 10};
     private static final int KINGESCAPE = 0;
     private static final int KINGSURROUNDING = 1;
     private static final int EATENPAWNS = 2;
+    private static final int WHITEREMAINING = 3;
 
     public WhiteHeuristic(State state) {
         super(state);
@@ -18,7 +19,7 @@ public class WhiteHeuristic extends Heuristic{
         /*
         *  Considerare la distanza del re dall'escape
         *  Pedine nemiche intorno al re
-        *  Pedine mangiate
+        *  Pedine mangiate e pedine rimanenti
         * */
 
         double result = 0;
@@ -26,12 +27,13 @@ public class WhiteHeuristic extends Heuristic{
         result += weights[KINGESCAPE] * kingEscapeValue();
         result += weights[KINGSURROUNDING] * kingSurroundingValue();
         result += weights[EATENPAWNS] * this.blackEatenValue();
+        result += weights[WHITEREMAINING] * (1 - this.whiteEatenValue());
 
         return result;
     }
 
     /**
-     * @return the number of possible king path to reach one of the Escapes
+     * @return the number of possible king paths to reach one of the Escapes
      * */
     private double kingEscapeValue(){
         double result = 0;

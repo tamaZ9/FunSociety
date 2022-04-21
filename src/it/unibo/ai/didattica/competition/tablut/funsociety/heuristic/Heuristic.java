@@ -24,13 +24,13 @@ public abstract class Heuristic {
      * @param state the current state
      * @return true if K is on the throne, false otherwise.
      */
-    protected boolean checkKingPosition(State state){
+    protected static boolean checkKingPosition(State state){
         return state.getPawn(4, 4).equalsPawn("K");
     }
 
     /**
-     * Pawns count (not including the King)
-     * This method retrieves also the king position
+     * Pawns count (not including the King).
+     * This method retrieves also the king position and stores it in the instance variable
      */
     private void countPawns(){
         for (int i = 0; i < this.state.getBoard().length; i++){
@@ -61,12 +61,13 @@ public abstract class Heuristic {
         return ((double) STARTINGBLACK - this.numBlack) / STARTINGBLACK;
     }
 
+
     /**
      * @param row the row to check
      * @param col the column to check
      * @return true if the position described by the params is a Camp
      * */
-    protected boolean isCamp(int row, int col){
+    protected static boolean isCamp(int row, int col){
         return (((row == 0 || row == 8) && (col >= 3 && col <= 5)) || ((row == 1 || row == 7) && (col == 4))
                 || ((col == 0 || col == 8) && (row >= 3 && row <= 5)) || ((col == 1 || col == 7) && (row == 4)));
     }
