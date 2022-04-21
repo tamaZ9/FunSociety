@@ -4,12 +4,13 @@ import it.unibo.ai.didattica.competition.tablut.domain.State;
 
 public class BlackHeuristic extends Heuristic{
 
-    private static final int[] weights = {40, 20, 10, 30};
+    private static final int[] weights = {30, 10, 5, 20, 40};
 
     private static final int EATENPAWNS = 0;
     private static final int KINGSURROUNDING = 1;
     private static final int BLOCKEDESCAPES = 2;
     private static final int BLACKREMAINING = 3;
+    private static final int KINGESCAPES = 4;
 
     private static final int[][] escapes = {{1, 1}, {1, 2}, {2, 1}, {1, 6}, {1, 7}, {2, 7}, {6, 1}, {7, 1}, {7, 2}, {6, 7}, {7, 6}, {7, 7}};
 
@@ -24,6 +25,7 @@ public class BlackHeuristic extends Heuristic{
         *  Considerare il re accerchiato
         *  Bloccare gli escape
         *  Considerare le pedine bianche mangiate e le pedine nere rimaste
+        *  Considerare le vie di fuga possibili del re
         * */
 
         double result = 0;
@@ -32,6 +34,8 @@ public class BlackHeuristic extends Heuristic{
         result += this.kingSurroundingValue() * weights[KINGSURROUNDING];
         result += (1 - this.blackEatenValue()) * weights[BLACKREMAINING];
         result += this.blockedEscapesValue() * weights[BLOCKEDESCAPES];
+        result -= this.possibleKingEscapesHorizontal() * weights[KINGESCAPES];
+        result -= this.possibleKingEscapesVertical() * weights[KINGESCAPES];
 
         return result;
     }

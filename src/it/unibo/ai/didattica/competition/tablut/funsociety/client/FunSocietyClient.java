@@ -14,19 +14,19 @@ public class FunSocietyClient extends TablutClient {
 
     private static final String playerName = "FunSociety";
 
-    public FunSocietyClient(String player, String name, int timeout, String ipAddress) throws UnknownHostException, IOException {
+    public FunSocietyClient(String player, String name, int timeout, String ipAddress) throws IOException {
         super(player, name, timeout, ipAddress);
     }
 
-    public FunSocietyClient(String player, String name, int timeout) throws UnknownHostException, IOException {
+    public FunSocietyClient(String player, String name, int timeout) throws IOException {
         super(player, name, timeout);
     }
 
-    public FunSocietyClient(String player, String name) throws UnknownHostException, IOException {
+    public FunSocietyClient(String player, String name) throws IOException {
         super(player, name);
     }
 
-    public FunSocietyClient(String player, String name, String ipAddress) throws UnknownHostException, IOException {
+    public FunSocietyClient(String player, String name, String ipAddress) throws IOException {
         super(player, name, ipAddress);
     }
 
@@ -61,6 +61,7 @@ public class FunSocietyClient extends TablutClient {
                 if (state.getTurn().equals(State.Turn.WHITE)){
                     IterativeDeepeningAlphaBeta search = new IterativeDeepeningAlphaBeta(game, Double.MIN_VALUE, Double.MAX_VALUE, this.timeout);
                     Action a = search.makeDecision(state);
+                    System.out.println(playerName + ": " + a.toString());
 
                     try{
                         this.write(a);
@@ -70,16 +71,20 @@ public class FunSocietyClient extends TablutClient {
 
                 } else if (state.getTurn().equals(State.Turn.WHITEWIN)){
                     System.out.println("Vittoria!");
+                    System.exit(1);
                 } else if (state.getTurn().equals(State.Turn.BLACKWIN)){
                     System.out.println("Sconfitta :(");
+                    System.exit(1);
                 } else if (state.getTurn().equals(State.Turn.DRAW)){
                     System.out.println("Pareggio :|");
+                    System.exit(1);
                 }
             }  else if (this.getPlayer().equals(State.Turn.BLACK)){
                 //Il nostro player e' black ed e' il nostro turno
                 if (state.getTurn().equals(State.Turn.BLACK)){
                     IterativeDeepeningAlphaBeta search = new IterativeDeepeningAlphaBeta(game, Double.MIN_VALUE, Double.MAX_VALUE, this.timeout);
                     Action a = search.makeDecision(state);
+                    System.out.println(playerName + ": " + a.toString());
 
                     try{
                         this.write(a);
@@ -88,10 +93,13 @@ public class FunSocietyClient extends TablutClient {
                     }
                 } else if (state.getTurn().equals(State.Turn.WHITEWIN)){
                     System.out.println("Sconfitta :(");
+                    System.exit(1);
                 } else if (state.getTurn().equals(State.Turn.BLACKWIN)){
                     System.out.println("Vittoria!");
+                    System.exit(1);
                 } else if (state.getTurn().equals(State.Turn.DRAW)){
                     System.out.println("Pareggio :|");
+                    System.exit(1);
                 }
             }
 
@@ -126,8 +134,8 @@ public class FunSocietyClient extends TablutClient {
         try{
             FunSocietyClient client = new FunSocietyClient(role, FunSocietyClient.playerName, timeout, serverIP);
             client.run();
-        } catch (Exception ex){
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
