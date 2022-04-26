@@ -4,7 +4,7 @@ import it.unibo.ai.didattica.competition.tablut.domain.State;
 
 public class BlackHeuristic extends Heuristic{
 
-    private static final int[] weights = {30, 10, 5, 20, 40};
+    private static final int[] weights = {50, 10, 10, 20, 100};
 
     private static final int EATENPAWNS = 0;
     private static final int KINGSURROUNDING = 1;
@@ -59,6 +59,9 @@ public class BlackHeuristic extends Heuristic{
         }
     }
 
+    /**
+     * @return the number of blocked escapes normalized by the number of total escapes
+     * */
     private double blockedEscapesValue(){
         // L'obiettivo e' bloccare gli escape in modo che il re non possa raggiungerli
         double result = 0;
@@ -68,7 +71,7 @@ public class BlackHeuristic extends Heuristic{
             }
         }
 
-        return result;
+        return (result / escapes.length);
     }
 
 
