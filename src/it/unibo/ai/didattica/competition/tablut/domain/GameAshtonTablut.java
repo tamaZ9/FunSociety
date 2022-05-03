@@ -1017,14 +1017,14 @@ public class GameAshtonTablut implements Game , aima.core.search.adversarial.Gam
 					// search on left of pawn
 					for (int k = j-1; k >= 0; k--){
 						// break if pawn is out of citadels and it is moving on a citadel
-						if (!citadels.contains(state.getBox(i, j)) && citadels.contains(state.getBox(k, j))){
+						if (!citadels.contains(state.getBox(i, j)) && citadels.contains(state.getBox(i, k))){
 							break;
 						}
 
 						// check if we are moving on a empty cell
-						else if (state.getPawn(k, j).equalsPawn(State.Pawn.EMPTY.toString())){
+						else if (state.getPawn(i, k).equalsPawn(State.Pawn.EMPTY.toString())){
 							String from = state.getBox(i, j);
-							String to = state.getBox(k, j);
+							String to = state.getBox(i, k);
 
 							Action action = null;
 
@@ -1053,14 +1053,14 @@ public class GameAshtonTablut implements Game , aima.core.search.adversarial.Gam
 					// search on right of pawn
 					for (int k = j+1; k<state.getBoard().length; k++){
 						// break if pawn is out of citadels and it is moving on a citadel
-						if (!citadels.contains(state.getBox(i, j)) && citadels.contains(state.getBox(k, j))){
+						if (!citadels.contains(state.getBox(i, j)) && citadels.contains(state.getBox(i, k))){
 							break;
 						}
 
 						// check if we are moving on a empty cell
-						else if (state.getPawn(k, j).equalsPawn(State.Pawn.EMPTY.toString())){
+						else if (state.getPawn(i, k).equalsPawn(State.Pawn.EMPTY.toString())){
 							String from = state.getBox(i, j);
-							String to = state.getBox(k, j);
+							String to = state.getBox(i, k);
 
 							Action action = null;
 
@@ -1088,7 +1088,6 @@ public class GameAshtonTablut implements Game , aima.core.search.adversarial.Gam
 				}
 			}
 		}
-
 		return result;
 	}
 
@@ -1121,10 +1120,11 @@ public class GameAshtonTablut implements Game , aima.core.search.adversarial.Gam
 		// if it is a terminal state
 		if ((turn.equals(State.Turn.BLACK) && state.getTurn().equals(State.Turn.BLACKWIN))
 				|| (turn.equals(State.Turn.WHITE) && state.getTurn().equals(State.Turn.WHITEWIN))){
+			//System.out.println("Win case: \n" + state);
 			return Double.POSITIVE_INFINITY;
 		} else if ((turn.equals(State.Turn.BLACK) && state.getTurn().equals(State.Turn.WHITEWIN))
 				|| (turn.equals(State.Turn.WHITE) && state.getTurn().equals(State.Turn.BLACKWIN))){
-			System.out.println(state);
+			//System.out.println("Lose case: \n" + state);
 			return Double.NEGATIVE_INFINITY;
 		}
 
