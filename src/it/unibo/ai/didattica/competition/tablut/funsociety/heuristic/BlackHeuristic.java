@@ -4,7 +4,7 @@ import it.unibo.ai.didattica.competition.tablut.domain.State;
 
 public class BlackHeuristic extends Heuristic{
 
-    private static final int[] weights = {40, 5, 10, 30, 40};
+    private static final int[] weights = {40, 5, 10, 30, 5};
 
     private static final int EATENPAWNS = 0;
     private static final int KINGSURROUNDING = 1;

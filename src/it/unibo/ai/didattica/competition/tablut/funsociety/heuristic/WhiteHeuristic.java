@@ -4,7 +4,7 @@ import it.unibo.ai.didattica.competition.tablut.domain.State;
 
 public class WhiteHeuristic extends Heuristic{
 
-    private static final int[] weights = {15, 10, 20, 25};
+    private static final int[] weights = {15, 4, 25, 30};
     private static final int KINGESCAPE = 0;
     private static final int KINGSURROUNDING = 1;
     private static final int EATENPAWNS = 2;

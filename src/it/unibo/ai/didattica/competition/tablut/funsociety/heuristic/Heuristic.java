@@ -5,10 +5,10 @@ import it.unibo.ai.didattica.competition.tablut.domain.State;
 public abstract class Heuristic {
 
     protected State state;
-    protected int numWhite;
-    protected int numBlack;
-    protected static int STARTINGWHITE = 8;
-    protected static int STARTINGBLACK = 16;
+    protected double numWhite;
+    protected double numBlack;
+    protected static double STARTINGWHITE = 8;
+    protected static double STARTINGBLACK = 16;
 
     protected int[] kingPosition;
 
@@ -51,14 +51,14 @@ public abstract class Heuristic {
      * @return the value (normalized between 0 and 1) of white pawns eaten
      * */
     protected double whiteEatenValue(){
-        return ((double) STARTINGWHITE - this.numWhite) / STARTINGWHITE;
+        return (STARTINGWHITE - this.numWhite) / STARTINGWHITE;
     }
 
     /**
      * @return the value (normalized between 0 and 1) of black pawns eaten
      * */
     protected double blackEatenValue(){
-        return ((double) STARTINGBLACK - this.numBlack) / STARTINGBLACK;
+        return (STARTINGBLACK - this.numBlack) / STARTINGBLACK;
     }
 
 

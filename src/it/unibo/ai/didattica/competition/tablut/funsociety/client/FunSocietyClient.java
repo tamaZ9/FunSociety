@@ -59,7 +59,7 @@ public class FunSocietyClient extends TablutClient {
             if (this.getPlayer().equals(State.Turn.WHITE)){
                 //Il nostro player e' white ed e' il nostro turno
                 if (state.getTurn().equals(State.Turn.WHITE)){
-                    IterativeDeepeningAlphaBeta search = new IterativeDeepeningAlphaBeta(game, Double.MIN_VALUE, Double.MAX_VALUE, this.timeout);
+                    IterativeDeepeningAlphaBeta search = new IterativeDeepeningAlphaBeta(game, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, this.timeout - 1);
                     Action a = search.makeDecision(state);
                     System.out.println(playerName + ": " + a.toString());
 
@@ -82,7 +82,7 @@ public class FunSocietyClient extends TablutClient {
             }  else if (this.getPlayer().equals(State.Turn.BLACK)){
                 //Il nostro player e' black ed e' il nostro turno
                 if (state.getTurn().equals(State.Turn.BLACK)){
-                    IterativeDeepeningAlphaBeta search = new IterativeDeepeningAlphaBeta(game, Double.MIN_VALUE, Double.MAX_VALUE, this.timeout);
+                    IterativeDeepeningAlphaBeta search = new IterativeDeepeningAlphaBeta(game, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, this.timeout - 1);
                     Action a = search.makeDecision(state);
                     System.out.println(playerName + ": " + a.toString());
 

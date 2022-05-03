@@ -1100,9 +1100,9 @@ public class GameAshtonTablut implements Game , aima.core.search.adversarial.Gam
 		this.movePawn(result, action);
 
 		// check for capture
-		if (result.getTurn().equalsTurn("W")){
+		if (state.getTurn().equalsTurn("W")){
 			this.checkCaptureWhite(result, action);
-		} else if (result.getTurn().equalsTurn("B")){
+		} else if (state.getTurn().equalsTurn("B")){
 			this.checkCaptureBlack(result, action);
 		}
 
@@ -1124,6 +1124,7 @@ public class GameAshtonTablut implements Game , aima.core.search.adversarial.Gam
 			return Double.POSITIVE_INFINITY;
 		} else if ((turn.equals(State.Turn.BLACK) && state.getTurn().equals(State.Turn.WHITEWIN))
 				|| (turn.equals(State.Turn.WHITE) && state.getTurn().equals(State.Turn.BLACKWIN))){
+			System.out.println(state);
 			return Double.NEGATIVE_INFINITY;
 		}
 
