@@ -4,7 +4,7 @@ import it.unibo.ai.didattica.competition.tablut.domain.State;
 
 public class BlackHeuristic extends Heuristic{
 
-    private static final int[] weights = {50, 5, 10, 30, 100};
+    private static final int[] weights = {40, 5, 10, 30, 40};
 
     private static final int EATENPAWNS = 0;
     private static final int KINGSURROUNDING = 1;
@@ -33,8 +33,7 @@ public class BlackHeuristic extends Heuristic{
         result += this.kingSurroundingValue() * weights[KINGSURROUNDING];
         result += (1 - this.blackEatenValue()) * weights[BLACKREMAINING];
         result += this.blockedEscapesValue() * weights[BLOCKEDESCAPES];
-        result += (2 - this.possibleKingEscapesHorizontal()) * weights[KINGESCAPES];
-        result += (2 - this.possibleKingEscapesVertical()) * weights[KINGESCAPES];
+        result -= (this.possibleKingEscapesHorizontal() > 0 || this.possibleKingEscapesVertical() > 0) ? weights[KINGESCAPES] : 0;
 
         return result;
     }
