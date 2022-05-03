@@ -1101,9 +1101,9 @@ public class GameAshtonTablut implements Game , aima.core.search.adversarial.Gam
 
 		// check for capture
 		if (result.getTurn().equalsTurn("W")){
-			this.checkCaptureBlack(result, action);
-		} else if (result.getTurn().equalsTurn("B")){
 			this.checkCaptureWhite(result, action);
+		} else if (result.getTurn().equalsTurn("B")){
+			this.checkCaptureBlack(result, action);
 		}
 
 		return result;
