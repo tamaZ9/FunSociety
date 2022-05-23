@@ -4,9 +4,9 @@ Implementation of an ancient Nordic game: Tablut, Fondamenti di Intelligenza Art
 
 ## Run from command line
 
-Our player has been tested with JDK 17
+Our player has been tested with JDK 17.
 
-First of all, you need to clone the repository and move to the Executables folder
+First of all, you need to clone the repository and move to the Executables folder:
 
 ```bash
 git clone https://github.com/tamaZ9/FunSociety.git
