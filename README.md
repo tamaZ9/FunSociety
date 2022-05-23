@@ -10,7 +10,7 @@ First of all, you need to clone the repository and move to the Executables folde
 
 ```bash
 git clone https://github.com/tamaZ9/FunSociety.git
-cd Executables
+cd FunSociety/Executables
 ```
 
 Then, you can start the game by typing:
