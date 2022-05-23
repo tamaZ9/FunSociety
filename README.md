@@ -21,6 +21,8 @@ java -jar FunSociety.jar WHITE [<timeout-in-seconds>] [<server-ip>]
 java -jar FunSociety.jar BLACK [<timeout-in-seconds>] [<server-ip>]
 ```
 
+Enjoy!
+
 ## Team members
 
 Adriano Donati, Jacopo Tamagnini
