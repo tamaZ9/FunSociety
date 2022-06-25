@@ -26,3 +26,12 @@ Enjoy!
 ## Team members
 
 Adriano Donati, Jacopo Tamagnini
+
+## Final results
+Full report available [here](http://ai.unibo.it/sites/ai.unibo.it/files/2022-06/2022INFend.pdf)
+### First round
+2nd place out of 8
+### Final round
+Tie for 1st place, but in the final match Algise won. Congratulations!
+### Prize
+Immortal: 1.35 checkers captured for game, the lower number of suffered captures (on average)
